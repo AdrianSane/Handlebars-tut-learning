@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Learning gulp and handlebars</title>
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/handlebars-v4.0.5.js" defer></script>
+    <script src="js/main.js" defer></script>
+  </head>
+  <body>
+
+    <div id="mainData"></div> <!-- user data -->
+    <div id="quoteData"></div> <!-- quote data -->
+    <div id="radioData"></div> <!-- radio data -->
+
+
+
+
+
+    <!--
+      *********************************************************** QUOTE TEMPLATE
+    -->
+    <script id="quote-template" type="text/x-handlebars-template">
+
+      <!--
+        - cycle through array items
+        - generate an ordered list
+        - for each quote in the array of objects named quotes
+      -->
+      <h3>Famous {{athlete}} Quotes</h3>
+      <ol>
+        {{#each quotes}}
+        <li>{{quote}}
+        {{/each}}
+      </ol>
+
+
+      <!--
+        - use html tags with triple stash
+        - using a triple stash in html will alow you to use html tags in javascript
+        - in this case: <i></i>
+      -->
+      {{{athleteBio}}}<br/><br/>
+
+
+      <!--
+        - a custom helper function
+        - generates html tags
+        - will allow you not to need to use triple stashes
+        - no commas needed
+        - allows you to use html tags in the javascript like triple stashes
+      -->
+      {{makeLink "Yogi Berra Museum" "http://www.zombieipsum.com/"}}<br/>
+
+
+      <!--
+        - adding attributes to a custom helper
+        - attributes passed into function as options
+      -->
+      {{changeColor "Make this text red" color="red"}}<br/>
+
+
+      <!--
+        - pass options that will be available to ALL custom helper functions
+      -->
+      {{sayHello}}
+
+    </script>
+    <!--
+      *********************************************************** QUOTE TEMPLATE
+    -->
+
+
+
+
+
+    <!--
+      **************************************************** BLOCK HELPER TEMPLATE
+    -->
+
+    <script id="blockHelperTemplate" type="text/x-handlebars-template">
+      <!--
+        - a block helper
+        - is the name associated with each radio button
+        - radio options to pass go inside of the block helper
+        - the sizes will be passed back whe the function is called
+      -->
+      {{#makeRadio "size"}}
+        Puny
+        Small
+        Medium
+        large
+        Gigantic
+      {{/makeRadio}}
+    </script>
+
+
+    <!--
+      **************************************************** BLOCK HELPER TEMPLATE
+    -->
+
+
+  </body>
+</html>
